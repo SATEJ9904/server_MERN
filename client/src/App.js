@@ -18,7 +18,7 @@ const App = () => {
     const [selectedId, setSelectedId] = useState(null);
 
     const fetchStudents = async () => {
-        const res = await axios.get('http://192.168.1.50:5000/api/students');
+        const res = await axios.get('/api/students');
         setStudents(res.data);
     };
 
@@ -28,9 +28,9 @@ const App = () => {
 
     const handleSubmit = async () => {
         if (selectedId) {
-            await axios.put(`http://192.168.1.50:5000/api/students/${selectedId}`, form);
+            await axios.put(`/api/students/${selectedId}`, form);
         } else {
-            await axios.post('http://192.168.1.50:5000/api/students', form);
+            await axios.post('/api/students', form);
         }
         setForm({ name: '', email: '', course: '', Previous_Degree: '' });
         setSelectedId(null);
@@ -43,7 +43,7 @@ const App = () => {
     };
 
     const handleDelete = async (id) => {
-        await axios.delete(`http://192.168.1.50:5000/api/students/${id}`);
+        await axios.delete(`/api/students/${id}`);
         fetchStudents();
     };
 
