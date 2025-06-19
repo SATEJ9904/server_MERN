@@ -7,6 +7,12 @@ pipeline {
     }
 
     stages {
+        stage('Test') {
+            steps {
+                echo 'Jenkinsfile is working!'
+            }
+        }
+
         stage('Clone Repo') {
             steps {
                 git credentialsId: "${GITHUB_CREDENTIALS}", url: 'https://github.com/SATEJ9904/server_MERN.git', branch: 'main'
@@ -134,10 +140,10 @@ services:
 
     post {
         failure {
-            echo "❌ Build or deployment failed."
+            echo '❌ Build or deployment failed.'
         }
         success {
-            echo "✅ MERN stack successfully deployed!"
+            echo '✅ MERN stack successfully deployed!'
         }
     }
 }
